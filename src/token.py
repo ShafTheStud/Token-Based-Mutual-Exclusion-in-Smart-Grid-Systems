@@ -16,7 +16,6 @@ class Token:
         """Initialize the token with a unique identifier and holder tracking."""
         self._lock = threading.Lock()
         self._current_holder = None
-        self._request_queue = []
         self.access_count = 0
         
     def acquire(self, node_id):

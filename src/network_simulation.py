@@ -7,6 +7,10 @@ from src.token import Token
 from src.node import Node
 
 
+# Constants for simulation monitoring
+MONITORING_INTERVAL = 0.5  # Interval for monitoring simulation progress (seconds)
+
+
 class NetworkSimulation:
     """
     Simulates a smart grid network with multiple nodes using token-based mutual exclusion
@@ -58,7 +62,7 @@ class NetworkSimulation:
         start_time = time.time()
         try:
             while (time.time() - start_time) < self.simulation_time:
-                time.sleep(0.5)
+                time.sleep(MONITORING_INTERVAL)
                 # Optionally monitor token status
         except KeyboardInterrupt:
             print("\n\nSimulation interrupted by user.")

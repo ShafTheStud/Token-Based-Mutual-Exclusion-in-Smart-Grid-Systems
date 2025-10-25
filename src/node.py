@@ -7,6 +7,11 @@ import time
 import random
 
 
+# Constants for resource access timing
+MIN_ACCESS_TIME = 0.3  # Minimum time for resource access (seconds)
+DEFAULT_MAX_ACCESS_TIME = 1.0  # Default maximum time for resource access (seconds)
+
+
 class Node(threading.Thread):
     """
     Represents a node in the smart grid system that requires access to shared energy resources.
@@ -58,7 +63,7 @@ class Node(threading.Thread):
         Simulates reading/writing energy data or controlling shared equipment.
         """
         self.access_count += 1
-        access_duration = random.uniform(0.3, min(1.0, self.max_access_time))
+        access_duration = random.uniform(MIN_ACCESS_TIME, min(DEFAULT_MAX_ACCESS_TIME, self.max_access_time))
         
         print(f"[Node {self.node_id}] ✓ Acquired token - Accessing shared energy resource (access #{self.access_count})")
         
